@@ -1,0 +1,328 @@
+/* Paleta de Cores e Tipografia Premium */
+:root {
+    --bg-ultimate: #000000;
+    --card-bg: rgba(20, 20, 20, 0.75);
+    --accent-cyan: #00f0ff;
+    --accent-magenta: #f00f0f;
+    --accent-yellow: #ffdf00;
+    --text-pure: #ffffff;
+    --text-dim: #888888;
+    --border-glow: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: var(--bg-ultimate);
+    color: var(--text-pure);
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* Navbar Minimalista e Fixa */
+.ue-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--border-glow);
+    z-index: 1000;
+}
+
+.navbar-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+}
+
+.ue-logo {
+    font-weight: 900;
+    font-size: 24px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    color: white;
+}
+
+.ue-logo span { color: var(--accent-magenta); }
+
+.ue-nav-links {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    color: var(--text-dim);
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 10px 15px;
+    transition: color 0.3s;
+    letter-spacing: 1px;
+}
+
+.nav-btn:hover, .nav-btn.active {
+    color: var(--text-pure);
+    border-bottom: 2px solid var(--accent-cyan);
+}
+
+/* Estrutura do Conteúdo */
+.ue-main {
+    margin-top: 120px;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 40px 60px 40px;
+}
+
+.ue-page {
+    display: none;
+    animation: fadeIn 0.6s ease forwards;
+}
+
+.ue-page.active { display: block; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Design do Hero Estilo Ultimate Ears */
+.hero-section {
+    padding: 60px 0;
+    text-align: left;
+}
+
+.hero-title {
+    font-size: 64px;
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -2px;
+    margin-bottom: 20px;
+}
+
+.gradient-text {
+    background: linear-gradient(45deg, var(--accent-cyan), var(--accent-magenta));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+    font-size: 18px;
+    color: var(--text-dim);
+    max-width: 600px;
+    line-height: 1.6;
+}
+
+/* Cards de Métricas e Containers de Grade */
+.grid-premium {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.metric-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-glow);
+    padding: 40px;
+    border-radius: 4px;
+    position: relative;
+    transition: transform 0.3s, border-color 0.3s;
+}
+
+.metric-card:hover {
+    transform: translateY(-5px);
+}
+
+.metric-card.cyan-glow:hover { border-color: var(--accent-cyan); }
+.metric-card.magenta-glow:hover { border-color: var(--accent-grey); }
+.metric-card.yellow-glow:hover { border-color: var(--accent-magenta); }
+
+.card-category {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    letter-spacing: 2px;
+}
+
+.metric-card h3 {
+    font-size: 48px;
+    font-weight: 900;
+    margin: 15px 0;
+}
+
+/* Divisores Interativos e Formulários Flutuantes */
+.interactive-split {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+@media(min-width: 992px) {
+    .interactive-split { grid-template-columns: 1fr 2fr; }
+}
+
+.glass-form-container {
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 4px;
+    border: 1px solid var(--border-glow);
+    height: fit-content;
+}
+
+.floating-input {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.floating-input input, .floating-input select {
+    width: 100%;
+    padding: 15px 10px 10px 0;
+    background: none;
+    border: none;
+    border-bottom: 2px solid var(--text-dim);
+    color: white;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.floating-input input:focus, .floating-input select:focus {
+    border-color: var(--accent-cyan);
+}
+
+.floating-input label {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    color: var(--text-dim);
+    transition: 0.3s ease all;
+    pointer-events: none;
+}
+
+.floating-input input:focus ~ label, .floating-input input:not(:placeholder-shown) ~ label,
+.floating-input select:focus ~ label, .floating-input select:valid ~ label {
+    top: -10px;
+    font-size: 12px;
+    color: var(--accent-cyan);
+    font-weight: bold;
+}
+
+/* Botões Premium */
+.ue-btn-primary {
+    width: 100%;
+    background: white;
+    color: black;
+    border: none;
+    padding: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.ue-btn-primary:hover {
+    background: var(--accent-cyan);
+    color: white;
+}
+.metric-card.green-glow:hover {
+    border-color: #10b981; /* Verde esmeralda futurista */
+}
+
+/* Componentes de Visualização (Cards Inline) */
+.ue-cards-list, .ue-grid-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.ue-grid-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.item-card {
+    background: rgba(15, 15, 15, 0.9);
+    border: 1px solid var(--border-glow);
+    padding: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 2px;
+}
+
+.item-info h4 { font-size: 18px; margin-bottom: 5px; }
+.item-info p { color: var(--text-dim); font-size: 14px; }
+
+.btn-delete {
+    background: none;
+    border: 1px solid var(--accent-magenta);
+    color: var(--accent-magenta);
+    padding: 8px 15px;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.btn-delete:hover {
+    background: var(--accent-magenta);
+    color: white;
+}
+
+.status-badge {
+    padding: 6px 12px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    background: rgba(0, 240, 255, 0.1);
+    color: var(--accent-cyan);
+    border: 1px solid var(--accent-cyan);
+}
+/* Correção de alinhamento para cards que possuem badges e botões juntos */
+.item-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+/* Efeito de hover vermelho sutil no botão apagar */
+.btn-delete {
+    background: none;
+    border: 1px solid var(--accent-magenta);
+    color: var(--accent-magenta);
+    padding: 8px 15px;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: 0.2s ease-in-out;
+}
+
+.btn-delete:hover {
+    background: var(--accent-magenta);
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(255, 0, 127, 0.4);
+}

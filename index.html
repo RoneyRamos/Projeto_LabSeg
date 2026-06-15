@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LabSeg // Ultimate Protection</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="views/style.css">
+</head>
+<body>
+
+    <nav class="ue-navbar">
+        <div class="navbar-container">
+            <a href="#" class="ue-logo" onclick="mudarPagina('home')">Lab<span>//</span>Seg</a>
+            <div class="ue-nav-links">
+                <button class="nav-btn active" onclick="mudarPagina('home')">Home</button>
+                <button class="nav-btn" onclick="mudarPagina('colaboradores')">Equipe</button>
+                <button class="nav-btn" onclick="mudarPagina('epis')">EPIs</button>
+                <button class="nav-btn" onclick="mudarPagina('exames')">Saúde/ASO</button>
+                <button class="nav-btn" onclick="mudarPagina('treinamentos')">Treinamentos</button>
+                <button class="nav-btn" onclick="mudarPagina('acidentes')">Acidentes</button>
+                <button class="nav-btn" onclick="mudarPagina('inspecoes')">Inspeções</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="ue-main">
+
+        <section id="pag-home" class="ue-page active">
+            <div class="hero-section">
+                <h1 class="hero-title">SEGURANÇA<br><span class="gradient-text">E COMPROMISSO.</span></h1>
+                <p class="hero-subtitle">Mapeamento completo de saúde corporativa e gerenciamento inteligente de riscos em uma única plataforma digital.</p>
+            </div>
+            
+            <div class="grid-premium">
+                <div class="metric-card cyan-glow">
+                    <span class="card-category">Monitorados</span>
+                    <h3 id="kpi-total-colab">0</h3>
+                    <p>Colaboradores Ativos</p>
+                </div>
+                <div class="metric-card magenta-glow">
+                    <span class="card-category">Proteção</span>
+                    <h3 id="kpi-total-epis">0</h3>
+                    <p>EPIs Distribuídos</p>
+                </div>
+                <div class="metric-card yellow-glow">
+                    <span class="card-category">Ocorrências</span>
+                    <h3 id="kpi-total-acidentes" style="color: var(--accent-magenta);">0</h3>
+                    <p>Acidentes Registrados</p>
+                </div>
+                <div class="metric-card green-glow">
+                    <span class="card-category">Auditoria</span>
+                    <h3 id="kpi-total-inspecoes">0</h3>
+                    <p>Inspeções Realizadas</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="pag-colaboradores" class="ue-page">
+            <div class="section-header">
+                <h2>// Gestão de Equipe</h2>
+                <p>Controle de admissões, setores e mapeamento de riscos operacionais.</p>
+            </div>
+            <div class="interactive-split">
+                <div class="glass-form-container">
+                    <form id="form-colaborador" class="ue-form">
+                        <div class="floating-input">
+                            <input type="text" id="colab-nome" required placeholder=" ">
+                            <label>Nome do Colaborador</label>
+                        </div>
+                        <div class="floating-input">
+                            <input type="text" id="colab-setor" required placeholder=" ">
+                            <label>Setor de Atuação</label>
+                        </div>
+                        <div class="floating-input">
+                            <input type="text" id="colab-cargo" required placeholder=" ">
+                            <label>Cargo Ocupacional</label>
+                        </div>
+                        <button type="submit" class="ue-btn-primary">Registrar na Base</button>
+                    </form>
+                </div>
+                <div class="interactive-list-container">
+                    <div id="lista-colaboradores" class="ue-cards-list"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pag-epis" class="ue-page">
+            <div class="section-header">
+                <h2>// Almoxarifado de EPIs</h2>
+                <p>Alocação de proteção individual com validação de CA digital.</p>
+            </div>
+            <div class="interactive-split">
+                <div class="glass-form-container">
+                    <form id="form-epi" class="ue-form">
+                        <div class="floating-input">
+                            <select class="select-colaboradores" id="epi-colab-select" required>
+                                <option value="" disabled selected hidden></option>
+                            </select>
+                            <label>Vincular ao Funcionário</label>
+                        </div>
+                        <div class="floating-input">
+                            <input type="text" id="epi-nome" required placeholder=" ">
+                            <label>Equipamento (Ex: Abafador Concha)</label>
+                        </div>
+                        <button type="submit" class="ue-btn-primary">Confirmar Entrega</button>
+                    </form>
+                </div>
+                <div class="interactive-list-container">
+                    <div id="lista-epis" class="ue-grid-cards"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pag-exames" class="ue-page">
+            <div class="section-header">
+                <h2>// Saúde Ocupacional (ASO)</h2>
+                <p>Cadastro e atualização de atestados e exames clínicos periódicos.</p>
+            </div>
+            <div class="interactive-split">
+                <div class="glass-form-container">
+                    <form id="form-exame" class="ue-form">
+                        <div class="floating-input">
+                            <select class="select-colaboradores" id="exame-colab-select" required>
+                                <option value="" disabled selected hidden></option>
+                            </select>
+                            <label>Selecionar Colaborador</label>
+                        </div>
+                        <div class="floating-input">
+                            <input type="text" id="exame-tipo" required placeholder=" ">
+                            <label>Tipo (Ex: Admissional, Periódico, Audiometria)</label>
+                        </div>
+                        <div class="floating-input">
+                            <select id="exame-status" required>
+                                <option value="" disabled selected hidden></option>
+                                <option value="Apto para Operação">Apto para Operação</option>
+                                <option value="Inapto Temporário">Inapto Temporário</option>
+                                <option value="Restrição Operacional">Restrição Operacional</option>
+                            </select>
+                            <label>Status Clínico</label>
+                        </div>
+                        <button type="submit" class="ue-btn-primary">Atualizar Prontuário</button>
+                    </form>
+                </div>
+                <div class="interactive-list-container">
+                    <div id="lista-exames" class="ue-grid-cards"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pag-treinamentos" class="ue-page">
+            <div class="section-header">
+                <h2>// Treinamentos Obrigatórios (NRs)</h2>
+                <p>Certificação e acompanhamento de qualificações de segurança vigentes.</p>
+            </div>
+            <div class="interactive-split">
+                <div class="glass-form-container">
+                    <form id="form-treinamento" class="ue-form">
+                        <div class="floating-input">
+                            <select class="select-colaboradores" id="treinamento-colab-select" required>
+                                <option value="" disabled selected hidden></option>
+                            </select>
+                            <label>Vincular Certificado</label>
+                        </div>
+                        <div class="floating-input">
+                            <input type="text" id="treinamento-nome" required placeholder=" ">
+                            <label>Norma Regulamentadora (Ex: NR-35 Trabalho em Altura)</label>
+                        </div>
+                        <div class="floating-input">
+                            <select id="treinamento-validade" required>
+                                <option value="" disabled selected hidden></option>
+                                <option value="Certificado Válido">Certificado Válido</option>
+                                <option value="Reciclagem Necessária">Reciclagem Necessária</option>
+                            </select>
+                            <label>Validade do Curso</label>
+                        </div>
+                        <button type="submit" class="ue-btn-primary">Registrar Treinamento</button>
+                    </form>
+                </div>
+                <div class="interactive-list-container">
+                    <div id="lista-treinamentos" class="ue-grid-cards"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pag-acidentes" class="ue-page">
+            <div class="section-header">
+                <h2>// Comunicação e Registro de Acidentes (CAT)</h2>
+                <p>Rastreamento rigoroso de incidentes e abertura de relatórios investigativos.</p>
+            </div>
+            <div class="interactive-split">
+                <div class="glass-form-container">
+                    <form id="form-acidente" class="ue-form">
+                        <div class="floating-input">
+                            <input type="date" id="acidente-data" required placeholder=" ">
+                            <label>Data da Ocorrência</label>
+                        </div>
+                        <div class="floating-input">
+                            <input type="text" id="acidente-local" required placeholder=" ">
+                            <label>Local / Setor do Ocorrido</label>
+                        </div>
+                        <div class="floating-input">
+                            <input type="text" id="acidente-descricao" required placeholder=" ">
+                            <label>Breve Descrição do Fato</label>
+                        </div>
+                        <button type="submit" class="ue-btn-primary" style="background: var(--accent-magenta); color: white;">Registrar Ocorrência</button>
+                    </form>
+                </div>
+                <div class="interactive-list-container">
+                    <div id="lista-acidentes" class="ue-cards-list"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pag-inspecoes" class="ue-page">
+            <div class="section-header">
+                <h2>// Auditorias e Inspeções de Campo</h2>
+                <p>Relatórios preventivos de conformidade estrutural e de processos mecânicos.</p>
+            </div>
+            <div class="interactive-split">
+                <div class="glass-form-container">
+                    <form id="form-inspecao" class="ue-form">
+                        <div class="floating-input">
+                            <input type="text" id="inspecao-local" required placeholder=" ">
+                            <label>Setor Inspecionado</label>
+                        </div>
+                        <div class="floating-input">
+                            <select id="inspecao-status" required>
+                                <option value="" disabled selected hidden></option>
+                                <option value="Aprovado em Auditoria">Conforme / Sem Riscos</option>
+                                <option value="Risco Crítico Detectado">Não-Conforme (Ação Imediata)</option>
+                            </select>
+                            <label>Resultado da Inspeção</label>
+                        </div>
+                        <button type="submit" class="ue-btn-primary">Salvar Laudo de Inspeção</button>
+                    </form>
+                </div>
+                <div class="interactive-list-container">
+                    <div id="lista-inspecoes" class="ue-grid-cards"></div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="models/classes.js"></script>
+</body>
+</html>
